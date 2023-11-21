@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;  
+    color: #e0adad;
+}
+
+h1, h2, h3 {
+    color: blue;
+}
+
+p {
+    color: blue;
+}
+
+
+
+#map {
+    height: 300px;
+    width: 70%;
+}
+
+
+.contact_us_container{
+
+    margin-left: 30px;;
+}

@@ -1,0 +1,526 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+   
+      <meta charset="utf-8" />
+      <title>{% block title %}Store - Low Prices in Books & more{% endblock %}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+ 
+
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}">
+
+    <style>              
+   
+        
+        .dropdown:hover >.dropdown-menu{
+          display: block !important;
+        }
+        .dropdown-submenu:hover > .dropdown-menu{
+          display: block !important;
+            left: 100%;
+            margin-top: -37px;
+        }
+
+        .dropdown-item{
+          font-size: small; /* 13px */
+        }
+        .dropdown-toggle::after{
+          font-size: var(--font-md);
+          margin-bottom: -2px;
+        }
+        .dropdown-menu li a.active{
+          color:#fff;
+        }
+
+        .custom-toggle-arrow{
+              font-size: 18px;
+              margin-top: 1px;
+              line-height: 12px;
+        }
+
+        /* side bar menu for small screen only */
+        .sidebar {
+          height: 100%;
+          width: 0;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #111;
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
+        }
+
+        .sidebar a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+          color: #f1f1f1;
+        }
+
+        .sidebar .closebtn {
+          position: absolute;
+          top: 0;
+          right: 25px;
+          font-size: 36px;
+          margin-left: 50px;
+        }
+
+        .openbtn {
+          font-size: 20px;
+          cursor: pointer;
+          background-color: #111;
+          color: white;
+          padding: 10px 15px;
+          margin: auto;
+          border: none;
+        }
+
+        .openbtn:hover {
+          background-color: #444;
+        }
+
+        #main {
+          transition: margin-left .5s;
+          padding: 16px;
+        }
+
+
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+          .sidebar {padding-top: 15px;}
+          .sidebar a {font-size: 18px;}
+        }
+    </style>   
+
+</head>
+
+
+<body>  
+  <div class="scrolling-text-container">
+    <h2 class="scrolling-text">The ultimate shopping experience. Powered by: mymeplus Technology.</h2>
+  </div> 
+   
+   
+  <header>
+
+    <nav class="navbar navbar-expand-md custom-nav_bg border-bottom" style="background-color:  #ffffff;">            
+   
+       <!-- main box-1 start-->
+      <div class="container-fluid">       
+                     
+        <!-- main box-2 start this will work only screen become small and collapse-->
+           <div class="d-flex w-100 navbar-collapse ">  
+                <a class="navbar-brand d-flex-inline" href="/">
+                  <img class="rounded-pill" src="{% static 'images/Logo.png' %}" alt="Logo" width="36" height="36"  >
+                </a>               
+
+            <button class="navbar-toggler border-0 "  type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list"
+                      viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </div>
+                  <span class="fs15 fw500">Shop</span>
+            </button>
+
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                     <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle d-none d-md-block fw500" style="font-size: 1.2em;" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Products
+                            <i class="ps-1">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg>
+                            </i>
+                          </a>
+                          
+                          <ul class="dropdown-menu rounded-0 border-0" aria-labelledby="navbarDropdown" >
+                              <li><a class="dropdown-item" href="{% url "store:store_home" %}">All</a></li>
+                                {% for c in categories %}
+                              <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+                                  <a class="dropdown-item"  href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                     </li>
+
+
+                   <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle d-none d-md-block fw500" style="font-size: 1.2em;" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Admin
+                            <i class="ps-1">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                              </svg>
+                            </i>
+                          </a>
+                      <ul class="dropdown-menu rounded-0 border-0" aria-labelledby="navbarDropdown">                       
+                        <li><a class="dropdown-item" href= "{% url 'account:admin-view' %}">Admin Page</a> </li>                        
+                        <li class="nav-item dropend"> <a class="dropdown-item" href= "{% url 'store:product-list' %}">All Product Status</a>
+                          <ul class="navbar-nav me-auto mb-2 mb-md-0" >                            
+                            <li><a class="dropdown-item" href= "{% url 'orders:order_crud_read' %}">Update_with Modal</a></li>
+                            <li><a class="dropdown-item" href= "{% url 'orders:update_delivery_status' %}">update_delivery_status</a></li>
+                            <li><a class="dropdown-item" href= "#">submenu2</a></li>
+                          </ul>                                                
+                        </li>                   
+                      </ul>                                          
+                    </li>
+                    
+                    <div class="container">
+                      <div class="row row-cols-md-4 row-cols-2">
+                          <ul><a class="dropdown-item" style="color:red;" href="{% url 'account:admin-view' %}">Hot Deals</a></ul>
+                          <ul><a class="dropdown-item" style="color:black" href="{% url 'account:admin-view' %}">Popular</a></ul>
+                          <ul class="d-none d-md-block"><a class="dropdown-item" style="color:black;" href="{% url 'account:admin-view' %}">MOM & Kid's </a></ul>
+                          <ul class="d-none d-md-block"><a class="dropdown-item" style="color:black;" href="{% url 'account:admin-view' %}">health care</a></ul>
+                          <ul class="d-none d-md-block"><a class="dropdown-item" style="color:black;" href="{% url 'account:admin-view' %}">Women's world</a></ul>
+                          <ul class="d-none d-lg-block"><a class="dropdown-item" style="color:black;" href="{% url 'account:admin-view' %}">Men's world</a></ul>
+                          <ul class="d-none d-lg-block"><a class="dropdown-item" style="color:black;" href="{% url 'account:admin-view' %}">Fitness World</a></ul>
+                          <ul class="d-none d-lg-block"><a class="dropdown-item" style="color:black;" href="{% url 'account:admin-view' %}">Tech world</a></ul>
+                      </div>
+                  </div>
+                  
+            </ul>        
+           
+
+                 <div>
+                      {% if user.is_authenticated %}                    
+                      <a href="{% url 'account:update_profile_picture' user.id %}">
+                        {% if profile_picture_url %}
+                          <img src="{{ profile_picture_url }}" style="height: 30px; width: 30px; border-radius: 50%;">
+                        {% else %}
+                          <p>No image</p>
+                        {% endif %}
+                      </a>
+                      {% endif %}
+                 </div>  
+                 
+                 
+
+                    <!-- account & LIst/welcome user -->
+                  <div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                     
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle text-reset" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">               
+                            
+                            <div class="small text-muted ps-2">
+                                Welcome,
+                                {% if user.is_authenticated %}
+                                  {{ request.user.name }}
+                                {% else %}
+                                  Login
+                                {% endif %}
+                            </div>                                  
+                            <span class="fs15 fw500">Account &amp; Lists </span>                 
+                          </a>
+
+                          <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdown">
+                            <div class="card border-0">                                                 
+                                <ul class="list-group list-group-flush dropdown-account-link">
+                                      {% if user.is_authenticated %}
+                                      <a href="{% url "account:dashboard" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Your Account</a>
+                                      <a href="{% url "orders:order-item" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Orders</a>
+                                      <a href="{% url "account:logout" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Logout</a>      
+                                      {% else %}
+                                      <a href="{% url "account:login" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Login</a>
+                                      {% endif %}
+                                </ul>                              
+                            </div>
+                          </div>
+
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                   <!-- account & LIst/welcome end here -->
+
+
+
+
+                  <!-- this is for basket/cart -->
+             <a type="button" role="button" href="{% url "basket:basket_summary" %}"
+                class="btn btn-outline-secondary border-0 basket-btn"  onclick="console.log('Basket button clicked')">
+                {% with total_qty=basket|length %}   
+                <div id="basket-qty" class="basket-qty">
+                    {% if total_qty > 0 %}
+                    {{ total_qty }}
+                    {% else %}
+                    0
+                    {% endif %}
+                </div>
+                    {% endwith %}
+                  <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart3"
+                        viewBox="0 0 16 16">
+                        <path
+                          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                      </svg>
+                  </div>
+                  <span class="fs15 fw500">Basket</span>
+              </a>
+ <!-- main box-2 end -->
+          </div>
+
+
+
+
+ <!-- main box-3 start only for small screen-->
+
+<div class="d-md-none d-lg-none d-xl-none">
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <nav>
+        <div id="mySidebar" class="sidebar" style="background-color: #ffffff;">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="{% url 'store:store_home' %}">All Categories</a>
+                  {% for c in categories %}          
+            <a class="dropdown-item {% if category.slug == c.slug %}selected {% endif %}" style="font-size: 1.2em;" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                {% endfor %}
+            <a href="#">expansion</a>
+            <a href="#">expansion</a>
+        </div>        
+        <div id="main" style="width:250px">
+          <button class="openbtn" style="width:250px" onclick="openNav()">&#9776; Product List</button> 
+        </div>
+    </nav>    
+     <nav class="nav justify-content-center" aria-label="Secondary navigation" style="background-color: rgb(231, 223, 13); width:250px"> 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" style="font-size: 1.2em; color: black;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Admin user
+          </a>
+          <ul class="dropdown-menu" style="background-color: #FF9F1C; width:250px">
+            <li><a class="dropdown-item" style="font-size: 1.2em;" href="{% url 'account:admin-view' %}"> Admin Page</a></li>
+            <li><a class="dropdown-item"style="font-size: 1.2em;" href="{% url 'store:product-list' %}"> All product available</a></li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item" style="font-size: 1.2em;" href="#"> Updata database <span
+                  class="float-end custom-toggle-arrow">&#187</span></a>
+              <ul class="dropdown-menu" style="background-color: #FF9F1C; width:250px">
+                <li><a class="dropdown-item" style="font-size: 1.2em;" href="{% url 'orders:update_delivery_status' %}">update_delivery_status</a></li>
+                <li><a class="dropdown-item"style="font-size: 1.2em;" href="{% url 'orders:order_crud_read' %}">Update with modal</a></li>
+
+                <li class="dropdown-submenu" >
+                  <a class="dropdown-item" style="font-size: 1.2em;" href="#"> Third Level <span
+                      class="float-end custom-toggle-arrow">&#187</span></a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" style="font-size: 1.2em;" href="#">Third Level Item 1</a></li>
+                    <li><a class="dropdown-item" style="font-size: 1.2em;" href="#">Third Level Item 2</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </nav>
+      <nav class="nav justify-content-center" aria-label="Secondary navigation" style="background-color: rgb(169, 244, 9); width:250px">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" style="font-size: 1.2em;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Your Account
+          </a>
+          <ul class="dropdown-menu" style="background-color:#FF9F1C; width:250px">
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-item"style="font-size: 1.2em;" href="{% url 'account:dashboard' %}"> My Account</a></li>
+            <li><a class="dropdown-item"style="font-size: 1.2em;" href="{% url 'orders:order-item' %}"> Your orders</a></li>   
+            <li><a class="dropdown-item"style="font-size: 1.2em;" href="{% url 'account:logout' %}"> Logout</a></li> 
+            {% else %}   
+            <li><a class="dropdown-item" style="font-size: 1.2em;" href="{% url 'account:login' %}">Login</a></li>
+            {% endif %}
+          </ul>
+        </li>
+      </nav>
+
+  </div>
+</div>
+
+
+<!-- main box-3 end -->
+
+<!-- search bar moved out of navbar and make available for small screen as well -->
+<!-- <form class="d-flex w-100" action="{% url 'store:search' %}" method="get">
+  <input class="form-control me-2" type="text" name="q" placeholder="Search products or FAQ" aria-label="Search">
+  <button class="btn btn-outline-secondary" type="submit">Search</button>
+</form> -->
+
+<!-- main box-1 end -->
+</div>
+
+</nav>
+</header>
+
+<!-- search bar -->
+<div style="width: 350px;margin: auto">
+  <form class="d-flex w-100" action="{% url 'store:search' %}" method="get">
+    <div class="input-group">
+      <input class="form-control" style="border: 1px solid #f5f0f0;"type="text" name="q" placeholder="Search products or FAQ" aria-label="Search" style="width:300px;">
+      <button class="btn btn-primary" type="submit">
+        <i class="fa fa-search"></i>s
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+  <main class="pt-5">    
+      {% block content %}
+
+      
+      
+      {% endblock %}
+  </main>
+ 
+
+  <footer class="container py-5 footer">
+    <hr>
+    <div class="row pt-4">
+      <div class="col-12 col-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
+        </svg>
+        <small class="d-block mb-3 text-muted">&copy; 2021-2023</small>
+      </div>
+      <div class="col-6 col-md fs15">
+        <h5>Features</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md fs15">
+        <h5>Resources</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md fs15">
+        <h5>Resources</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Business</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Education</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Government</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Gaming</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script>
+    // JavaScript to control the open and close behavior of the dropdown toggle
+    document.addEventListener("DOMContentLoaded", function () {
+      let dropdownToggle = document.querySelector('.dropdown-toggle');
+      let dropdownMenu = document.querySelector('.dropdown-menu');
+  
+      dropdownToggle.addEventListener('click', function () {
+        if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+          dropdownMenu.style.display = 'block';
+        } else {
+          dropdownMenu.style.display = 'none';
+        }
+      });
+    });
+
+
+    /* sidebar nav*/
+  function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+
+   /* sidebar nav*/
+   function openNav2() {
+  document.getElementById("mySidebar2").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+function closeNav2() {
+  document.getElementById("mySidebar2").style.width = "0";
+  document.getElementById("main2").style.marginLeft = "0";
+}
+
+
+
+
+$(document).ready(function() {
+    $("#search-form").submit(function(e) {
+      e.preventDefault();
+      let query = $("#search-input").val();
+      $.ajax({
+        type: "GET",
+        url: "/search/",  // Replace with your actual search endpoint
+        data: {
+          q: query
+        },
+        success: function(data) {
+          $("#search-results").html(data);
+        },
+        error: function(error) {
+          console.error("An error occurred:", error);
+        }
+      });
+    });
+  });
+
+
+
+  </script>
+  
+</body>
+
+</html>

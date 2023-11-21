@@ -1,0 +1,275 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Menu Design by Code4education</title>
+
+    <!-- Bootstrap 5 CDN Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom File's Link -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;900&display=swap');
+
+body {
+    background: #3F3B51;
+    font-family: 'Roboto Slab', serif;
+}
+
+button:focus,
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+header {
+    background-color: #008489;
+    padding: 15px 0;
+
+}
+
+.navbar-brand {
+    font-size: 40px;
+    font-weight: 700;
+    color: #0AEDED;
+    -webkit-text-stroke: #fff 1px;
+
+}
+
+.navbar-brand:hover {
+    color: #3F3B51;
+
+}
+
+.navbar-nav .nav-item {
+    margin: 0 10px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    display: inline-block;
+}
+
+.dropdown-menu .dropdown-item {
+    margin-bottom: 10px;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #008489;
+    color: #fff;
+}
+
+.dropdown-mega .dropdown-menu {
+    width: 100%;
+}
+
+.dropdown-mega h5 {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    margin: 0;
+}
+
+.list-group-item {
+    font-size: 16px;
+    color: #3F3B51;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .125);
+    padding: 12px 0;
+}
+
+.list-group-item:hover {
+    color: #008489;
+}
+
+.btn {
+    background-color: #0AEDED;
+}
+
+section {
+    height: 100vh;
+}
+footer a{
+    color: #0AEDED;
+
+}
+
+/* Responsive */
+@media(max-width: 991.5px) {
+    .navbar-brand {
+        font-size: 30px
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 10px;
+    }
+
+    form {
+        margin: 30px 0;
+    }
+}
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">MegaMenu</a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-content">
+                    <i class="fas fa-stream text-white"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-content">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside">Multilevel</a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="#">Gallery</a></li>
+                                <li><a class="dropdown-item" href="blog.html">Blog</a></li>
+                                <li class="dropstart">
+                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Submenu
+                                        Left</a>
+                                    <ul class="dropdown-menu shadow">
+                                        <li><a class="dropdown-item" href=""> Third level 1</a></li>
+                                        <li><a class="dropdown-item" href=""> Third level 2</a></li>
+                                        <li><a class="dropdown-item" href=""> Third level 3</a></li>
+                                        <li><a class="dropdown-item" href=""> Third level 4</a></li>
+                                        <li><a class="dropdown-item" href=""> Third level 5</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropend">
+                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside">Submenu Right</a>
+                                    <ul class="dropdown-menu shadow">
+                                        <li><a class="dropdown-item" href=""> Second level 1</a></li>
+                                        <li><a class="dropdown-item" href=""> Second level 2</a></li>
+                                        <li><a class="dropdown-item" href=""> Second level 3</a></li>
+                                        <li class="dropend">
+                                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside">Let's go deeper!</a>
+                                            <ul class="dropdown-menu dropdown-submenu shadow">
+                                                <li><a class="dropdown-item" href=""> Third level 1</a></li>
+                                                <li><a class="dropdown-item" href=""> Third level 2</a></li>
+                                                <li><a class="dropdown-item" href=""> Third level 3</a></li>
+                                                <li><a class="dropdown-item" href=""> Third level 4</a></li>
+                                                <li class="dropend">
+                                                    <a href="#" class="dropdown-item dropdown-toggle"
+                                                        data-bs-toggle="dropdown">Still don't have enough? Go much
+                                                        deeper!</a>
+                                                    <ul class="dropdown-menu dropdown-submenu shadow">
+                                                        <li><a class="dropdown-item" href=""> Third level 1</a></li>
+                                                        <li><a class="dropdown-item" href=""> Third level 2</a></li>
+                                                        <li><a class="dropdown-item" href=""> Third level 3</a></li>
+                                                        <li><a class="dropdown-item" href=""> Third level 4</a></li>
+                                                        <li><a class="dropdown-item" href=""> Third level 5</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item" href=""> Third level 5</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside">Megamenu</a>
+                            <div class="dropdown-menu shadow">
+                                <div class="mega-content px-md-4">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex ms-auto">
+                        <div class="input-group">
+                            <input class="form-control border-0 mr-2" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn border-0" type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="my-5">
+    </section>
+
+    <footer class="bg-dark p-4 text-white text-center">
+        <p class="p-0">Copyright <a href="#">© CODE4EDUCATION.</a> All Rights Reserved</p>
+    </footer>
+    <!-- Bootstrap 5 JS CDN Links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

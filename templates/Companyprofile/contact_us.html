@@ -1,0 +1,50 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block title %}ContactUs - mymeplus Technology{%endblock %}
+{% block content %}
+
+
+
+    <link rel="stylesheet" href="{% static 'companyprofile/css/contact.css' %}">
+    <!-- Include Google Maps API script here -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdVcqhnHGVbIhGC8ibeDUbGi1uA3oAPn8&callback=initMap" async defer></script>
+
+
+<div class="container contact_us_container">
+    
+        <h1>Contact Us</h1>
+
+
+  
+        <h2 style="color:blue;"><strong>Our Office Address</strong></h2><br>
+        <p> ddealshop powered by mymeplus Technology<br>
+            Block-F, Bashundhara, Dhaka <br>
+            Bangladesh</p><br>
+        <a href="https://wa.me/8801743800705" style="color:green; font-style:italic;">Chat with us on WhatsApp</a>
+
+
+    <section id="map">
+        <!-- Google Map will be displayed here -->
+    </section>
+
+
+        <p>For inquiries, please contact us at Reach out to our team at <a href="https://wa.me/8801743800705" style="color:green; font-style:italic;">Chat with us on WhatsApp</a></p>
+
+</div>
+
+    <script>
+        // Initialize Google Map
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 23.8191441, lng:  90.45259540000006 }, // Replace with the actual coordinates of your address
+                zoom: 15
+            });
+
+            const marker = new google.maps.Marker({
+                position: { lat: 23.8191441, lng: 90.45259540000006 }, // Replace with the actual coordinates of your address
+                map: map,
+                title: 'ddealshop.com powered by mymeplus Technology'
+            });
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,217 @@
+{% extends "../base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+    {% if user.is_authenticated %}    
+        <div class="row row-cols-md-2 row-cols-sm-1 g-3">        
+            <!-- <div class=" col">  -->
+            <!-- Display customer's address from the database -->
+
+            {% if customer_address %}
+            {% for customer in customer_address %}         
+                <div class="border p-3 my-3"> 
+                    <h4 class="mb-3">Billing Address</h4>                
+                    <p class="mb-1"><strong>Name:</strong> {{ customer.full_name }}</p>
+                    <p class="mb-1"><strong>Phone:</strong> {{ customer.phone }}</p>
+                    <p class="mb-1"><strong>Email:</strong> {{ request.user.email }}</p>
+                    <p class="mb-1"><strong>Post Code:</strong> {{ customer.post }}</p>
+                    <p class="mb-1"><strong>Address-1:</strong> {{ customer.address_line }}</p>
+                    <p class="mb-1"><strong>Address-2:</strong> {{ customer.address_line2 }}</p>
+                    <p class="mb-1"><strong>Area:</strong> {{ customer.town_city }}</p>
+                    <a href="{% url 'account:addresses' %}" class="btn btn-primary">Update Address</a>
+                </div>            
+             {% endfor %}
+      
+            {% else %}
+            <div class="d-flex justify-content-center align-items-center mx-auto shadow" style="padding:20px" >
+                <p>Notice!! <br>You don't have any address. Please add an address. You can add more than one address. 
+                    You can add , edit, delete and make address default. <br>
+                <a href="{% url 'account:addresses' %}" class="btn btn-primary">Add Address</a></p>
+            </div>
+            
+        {% endif %}
+        
+       
+
+        <div class=" col">       
+            <table class="table" style="width:100%">              
+                <thead>
+                    <tr>
+                        <th class="text-center"colspan="3">PID</th>
+                        <th class="text-center"colspan="6">Product Name</th>
+                        <th class="text-center"colspan="6">Price</th>
+                        <th class="text-center"colspan="6">Quantity</th>  
+                        <th class="text-center"colspan="6">Image</th>
+                    </tr>
+                </thead>            
+                <tbody>
+                    <h4>Your purchase </h4>
+                    <p class="mb-1"><strong>Order Number</strong> {{ order_key }}</p>
+                    {% for item in basket %}
+                        <tr>
+                            <td class="text-center"colspan="3"> {{ item.product.id}}</td>
+                            <td class="text-center"colspan="6"> {{ item.product.title }}</td>
+                            <td class="text-center"colspan="6">{{ item.price }}</td>
+                            <td class="text-center"colspan="6">{{ item.qty }}</td>   
+                            <td class="text-center"colspan="6"><img src="{{ item.product.product_image.first.image.url }}"  style="width:25px;height:25px;"></td>                      
+                            <!-- Add other columns based on the Product model fields -->
+                        </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            
+            </table>
+            
+            <p class="mb-1"><strong>Total(excluding delivery)= {{ basket.get_total_price }}</p></strong>        
+            <h6>Total in words:{{ basket.get_total_price_in_words }}</h6>
+            <h6> delivery charge=Taka<span id = "deliveryCharge">0.0</span></h6>           
+          
+    </div>    
+             
+        
+    <div class="col"> 
+        <h4>Payment option</h4>
+        <form>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentOption" id="paymentOption1" value="poption1" checked>
+                <label class="form-check-label" for="paymentOption1">
+                    <strong>Cash on delivery</strong>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentOption" id="paymentOption2" value="poption2">
+                <label class="form-check-label" for="paymentOption2">
+                    <strong>Mobile Finance(Not active at this moment)</strong>
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="paymentOption" id="paymentOption3" value="poption3">
+                <label class="form-check-label" for="paymentOption3">
+                    <strong>Online Banking(Not active at this moment)</strong>
+                </label>
+            </div>
+        </form>
+    </div>
+    
+    <div class="col">
+        <h4>Delivery option</h4>
+      
+        <ul>
+           <div>
+                <input class="form-check-input" type="radio" name="deliverytOption" id="deliverytOption1" value="doption1" checked>
+                <label class="form-check-label" for="deliveryOption2">
+                    <strong>Pick from store (free)</strong>
+                </label>
+            </div>
+           
+            <div>
+                <input class="form-check-input" type="radio" name="deliverytOption" id="deliverytOption2" value="doption2">
+                <label class="form-check-label" for="deliveryOption2">
+                    <strong>Within Dhaka city (100/=,3 days)</strong>
+                </label>
+            </div>
+            <div>
+                <input class="form-check-input" type="radio" name="deliverytOption" id="deliveryOption3" value="doption3">
+                <label class="form-check-label" for="deliveryOption3">
+                    <strong>Outside Dhaka city (120 Taka)</strong>
+                </label>
+            </div>
+            <div>
+                <input class="form-check-input" type="radio" name="deliverytOption" id="deliveryOption4" value="doption4">
+                <label class="form-check-label" for="deliveryOption4">
+                    <strong>Express(Only Dhaka city,150/=,24 hours)</strong>
+                </label>
+            </div>
+        </ul>
+  
+    </div>
+    
+   
+    <div> 
+        <button class="btn btn-primary w-100" onclick="proceed()">Process order</button>
+    </div>
+
+
+    
+        <!-- </div> -->
+    </div>
+
+</div>   
+       
+    
+    {% else %}
+        <div class="'container d-flex justify-content-between align-items-center">
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-4 d-flex justify-content-between align-items-center border border-primary" style=" height:150px;border-radius: 10px; box-shadow:5px 10px 10px 20px rgba(210, 150, 120, 0.5);">          
+                    <p><Strong>Please <a href="{% url 'account:login' %}?next={{ request.path }}">login</a> to process your order.</Strong></p>                     
+                </div>           
+                <div class="col-4"></div>        
+             </div> 
+         </div>          
+    
+    {% endif %}
+
+ 
+
+    <script>
+        let globalDeliveryCharge = 0;
+    
+        document.querySelectorAll('input[type=radio][name=deliverytOption]').forEach((radio) => {
+        radio.addEventListener('change', (event) => {
+            const selectedDeliveryOption = event.target.value;
+            if (selectedDeliveryOption === 'doption1') {
+                globalDeliveryCharge =0.00;            
+            } else if (selectedDeliveryOption === 'doption2') {
+                globalDeliveryCharge = 100.00;
+            }else if (selectedDeliveryOption === 'doption3') {
+                globalDeliveryCharge = 120.00;
+            } else if (selectedDeliveryOption === 'doption4') {
+                globalDeliveryCharge = 150.00;
+            }
+            document.getElementById('deliveryCharge').innerText = globalDeliveryCharge; // Update the HTML content
+        });
+    });
+
+   
+        function proceed() {
+            $.ajax({
+                type: 'POST',
+                url: '{% url "orders:add" %}', 
+                headers: { 'X-CSRFToken': '{{ csrf_token }}' },
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    deliveryCharge: globalDeliveryCharge  // Pass the delivery charge here
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(error) {
+                    // Handle error
+                }
+            });
+    
+            $.ajax({
+                type: 'POST',
+                url: '{% url "payment:order_placed" %}',  
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    deliveryCharge: globalDeliveryCharge  // Pass the delivery charge here
+                },
+                success: function(response) {
+                    window.location.href = '{% url "payment:order_placed" %}';
+                },
+                error: function(error) {
+                    // Handle error
+                }
+            });
+        }
+    </script>
+    
+
+
+
+{% endblock %}
+

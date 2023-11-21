@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+{% block content %}
+<h1>Add Product</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ product_form.as_p }}
+    
+    <h2>Add Images</h2>
+    <div id="images-formset">
+        {{ image_formset.management_form }}
+        {% for form in image_formset %}
+            {{ form.as_table }}
+        {% endfor %}
+    </div>
+    <button type="button" id="add-image">Add Another Image</button>
+
+    <h2>Add Specifications</h2>
+    <div id="specs-formset">
+        {{ spec_formset.management_form }}
+        {% for form in spec_formset %}
+            {{ form.as_table }}
+        {% endfor %}
+    </div>
+    <button type="button" id="add-spec">Add Another Specification</button>
+    
+    <h2>Add Specification Values</h2>
+    <div id="spec-values-formset">
+        {{ spec_value_formset.management_form }}
+        {% for form in spec_value_formset %}
+            {{ form.as_table }}
+        {% endfor %}
+    </div>
+    <button type="button" id="add-spec-value">Add Another Specification Value</button>
+
+    <button type="submit">Save Product</button>
+</form>
+
+<script>
+$(document).ready(function () {
+    function addFormset(button, formsetId) {
+        var formset = $("#" + formsetId);
+        var totalForms = parseInt(formset.find("input[name$='TOTAL_FORMS']").val());
+        var newForm = formset.find("tr:first").clone(true);
+        newForm.find(":input").each(function () {
+            var name = $(this).attr("name").replace("-" + (totalForms - 1) + "-", "-" + totalForms + "-");
+            var id = $(this).attr("id").replace("-" + (totalForms - 1) + "-", "-" + totalForms + "-");
+            $(this).attr({"name": name, "id": id}).val("").removeAttr("checked");
+        });
+        newForm.find("td").each(function () {
+            var name = $(this).attr("name").replace("-" + (totalForms - 1) + "-", "-" + totalForms + "-");
+            $(this).attr("name", name);
+        });
+        newForm.insertAfter(formset.find("tr:last"));
+        formset.find("input[name$='TOTAL_FORMS']").val(totalForms + 1);
+    }
+
+    $("#add-image").click(function () {
+        addFormset(this, "images-formset");
+    });
+
+    $("#add-spec").click(function () {
+        addFormset(this, "specs-formset");
+    });
+
+    $("#add-spec-value").click(function () {
+        addFormset(this, "spec-values-formset");
+    });
+});
+</script>
+
+{% endblock %}

@@ -1,0 +1,203 @@
+/* Bootstrap Over-ride */
+@media (min-width: 1000px){
+    .container{
+        max-width: 1000px;
+    }
+}
+@media (max-width: 1200px){
+    .container{
+        max-width: 100%;
+        padding:0 24px;
+    }
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.dropdown-menu{
+    top:58px;
+    left:0px;
+    padding:10px;
+}
+
+.alert-primary{
+    background-color: #E4F1FF;
+}
+
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+html, body, p, div{
+    letter-spacing: -0.02px;
+    font-family: 'Roboto', sans-serif bold; 
+   
+}
+
+
+.fs12{
+    font-size: 12px;
+}
+.fs15{
+    font-size: 0.9375rem;
+}
+
+.fw300{
+    font-weight: 300;
+}
+.fw500{
+    font-weight: 500;
+}
+
+
+/* Navigation-Main*/
+
+/* xs */
+.logo {
+    width: 49px;
+    height: auto;
+}
+/* sm */
+@media (min-width: 768px) {
+    .logo {
+        width: 49px;
+    }
+}
+/* md */
+@media (min-width: 992px) {
+    .logo {
+        width: 60px;
+    }
+}
+/* lg */
+@media (min-width: 1200px) {
+    .logo {
+        width: 70px;
+    }
+}
+
+/* Basket Menu */
+
+.basket-qty{
+    color: #fff;
+    background: #d42114;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 11px;
+    height: 15px;
+    width: 14px;
+    position: absolute;
+    box-sizing: content-box;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 1px;
+    right: 10px;
+}
+
+.basket-btn{
+    position: relative;
+}
+
+.basket-btn:hover, .basket-btn:focus, .basket-btn:active, .basket-btn.active{
+    color:#08f275;
+    transition-duration: 0.4s;
+    background-color: #fff;
+}
+
+
+/* Footer */
+
+.footer > div > div > ul > li{
+    padding-bottom:8px;
+}
+
+
+/* below css for scrolling text/marquee at base.html*/
+  
+  .scrolling-text-container {            
+    width: 100%;
+    overflow: hidden;
+    position: relative;    
+    background-color: cyan; 
+    height: 10vh;
+        
+   }
+  
+  .scrolling-text {
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
+    font-size: 20px; 
+    text-align: center;
+    font-style:inherit;
+    width:100%;  
+    color: rgb(9, 13, 241);   
+   
+    }
+  
+    @keyframes marquee {
+    0% {transform: translateX(100%);}
+    100% {transform: translateX(-100%);}
+    }
+
+
+     /* below button style for change_profile_picture.html template*/  
+.styled-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px #999;
+  }
+  
+  .styled-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .styled-button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .update_profile_pic{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 50vh; margin-top: 5px;          
+    width:40%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow:5px 10px 10px 20px rgba(210, 150, 120, 0.5);
+
+  }     
+    
+  
+
+  .list-group-item:hover {
+    background-color: #b9ced3; /* base.html line 110 */   
+  } 
+
+  .dropdown-account-link .list-group-item {
+    width: 100% !important;
+  }
+
+
+  .nav-link.dropdown-toggle:hover {
+    color: rgb(50, 205, 89);
+    
+  }
+
+  .nav-link.dropdown-toggle:hover .fs15 {
+  
+    color: rgb(19, 239, 228);
+  }
+

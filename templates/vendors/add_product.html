@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Product{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row row-cols-md-2 row-cols-1">
+            <!-- Category column -->
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Category</h5>
+                        {{ category_form.as_p }}
+                    </div>
+                </div>
+            </div>
+            <!-- Product Type column -->
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Type</h5>
+                        {{ product_type_form.as_p }}
+                    </div>
+                </div>
+            </div>
+            <!-- Product Specification column -->
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Specification</h5>
+                        {{ product_specification_form.as_p }}
+                    </div>
+                </div>
+            </div>
+            <!-- Specification Value column -->
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Specification Value</h5>
+                        {{ product_specification_value_form.as_p }}
+                    </div>
+                </div>
+            </div>
+            <!-- Product column -->
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product</h5>
+                        {{ product_form.as_p }}
+                    </div>
+                </div>
+            </div>
+            <!-- Product Image column -->
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Product Image</h5>
+                        {{ product_image_form.as_p }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+</div>
+
+
+    
+
+{% endblock content %}

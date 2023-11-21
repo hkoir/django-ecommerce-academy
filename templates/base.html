@@ -1,0 +1,775 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ddealshop.com by mymeplus Technology</title>  
+ 
+  
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+  
+    <!-- <link rel="stylesheet" type="text/css" href="https://{{ AWS_S3_CUSTOM_DOMAIN }}{% static 'core/css/base.css' %}">
+     -->
+    <link rel="stylesheet" href="{% block stylesheet %}{% endblock %}">
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<Style>
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;900&display=swap');
+
+  
+    header {
+        background-color: black;
+        padding: 15px 0;
+    }
+
+
+    button:focus,
+    .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+  
+
+    .navbar-brand {
+        font-size: 40px;
+        font-weight: 700;
+        color: #0AEDED;
+        -webkit-text-stroke: #fff 1px;
+
+    }
+
+    .navbar-brand:hover {
+        color: #3F3B51;
+
+    }
+
+    .navbar-nav .nav-item {
+        margin: 0 10px;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 16px;
+        font-weight: 400;
+        color: #fff;
+        display: inline-block;
+    }
+
+    .dropdown-menu .dropdown-item {
+        margin-bottom: 10px;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #008489;
+        color: #fff;
+    }
+
+    .dropdown-mega .dropdown-menu {
+        width: 100%;
+    }
+
+    .dropdown-mega h5 {
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+        margin: 0;
+    }
+
+    .list-group-item {
+        font-size: 16px;
+        color: #3F3B51;
+        border: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, .125);
+        padding: 12px 0;
+    }
+
+    .list-group-item:hover {
+        color: #008489;
+    }
+
+    .btn {
+        background-color: black; /* this button color affect basket background */
+    }
+  
+
+    section {
+        height: 100vh;
+    }
+    footer a{
+        color: #0AEDED;
+
+    }
+
+    /* Responsive */
+    @media(max-width: 991.5px) {
+        .navbar-brand {
+            font-size: 30px
+        }
+
+        .navbar-nav .nav-item {
+            margin: 5px 10px;
+        }
+
+        form {
+            margin: 30px 0;
+        }
+    }
+
+    .search-btn_custom {
+    background-color: blue;
+    border-color: blue;
+    color:#f5f0f0
+    }
+
+    .search-btn_custom:hover {
+    background-color: greenyellow;
+    border-color: #0062cc;
+    }
+
+
+
+
+
+
+    /* side bar collaspsed side bar menu for small screen only */
+    .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: black;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            }
+
+            .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            }
+
+            .sidebar a:hover {
+            color: #f1f1f1;
+            }
+
+            .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            }
+
+            .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            margin: auto;
+            border: none;
+            }
+
+            .openbtn:hover {
+            background-color: #444;
+            }
+
+            #main {
+            transition: margin-left .5s;
+            padding: 16px;
+            }
+
+
+            /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+            @media screen and (max-height: 450px) {
+            .sidebar {padding-top: 15px;}
+            .sidebar a {font-size: 18px;}
+            }
+
+
+/* animated text */
+ @keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.anim {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.anim2 {
+  animation: slide 2s ease-in-out infinite 
+}
+
+/* Small screen */
+@media (max-width: 768px) {
+  #logo {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Large screen */
+@media (min-width: 769px) {
+  #logo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+/* Small screen */
+@media (max-width: 768px) {
+  .basket-btn {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+/* Large screen */
+@media (min-width: 769px) {
+  .basket-btn {
+    padding: 10px;
+    font-size: 18px;
+  }
+}
+
+.basket-btn {
+  background-color: transparent;
+}
+.basket-btn:hover {
+  background-color: transparent;
+}
+
+.icon-format:hover {
+    fill: blue;
+}
+
+/* Large screen */
+@media (min-width: 769px) {
+    .icon-format{
+        width:30px;
+        height:30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .icon-format{
+        width:22px;
+        height:22px;
+    }
+}
+
+
+.icon-format {
+    width:30px;
+    height:30px;
+}
+
+
+.dropdown_background:hover {
+    background-color: blue;
+    /* Add other styles as needed */
+}
+
+   </Style>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: #FF5B22">
+            <div class="container">              
+                
+                <!--  basket here -->
+                <div>
+                    <a type="button" role="button" href="{% url "basket:basket_summary" %}"
+                    class="btn btn-outline-secondary border-0 basket-btn" style="color:white; font-size:1em;">
+                    {% with total_qty=basket|length %}   
+                    <div id="basket-qty" class="basket-qty">
+                        {% if total_qty > 0 %}
+                        {{ total_qty }}
+                        {% else %}
+                        0
+                        {% endif %}
+                    </div>
+                        {% endwith %}
+                      <div >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="#0AEDED" class="bi bi-cart3 icon-format"
+                            viewBox="0 0 16 16" >
+                            <path
+                              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                          </svg>
+                      </div>
+                      <span class="fs15 fw500" style="color:white">Basket</span>
+                  </a>
+                </div>
+             
+                <!-- User profile start -->
+                <div class="small ps-2" style="color: white; margin:auto">
+                    Welcome,
+                    {% if user.is_authenticated %}
+                        {{ request.user.name }}
+                    {% else %}
+                        Login
+                    {% endif %}               
+    
+                    <div>
+                        {% if user.is_authenticated %}                    
+                        <a href="{% url 'account:update_profile_picture' user.id %}">
+                            {% if profile_picture_url %}
+                            <img src="{{ profile_picture_url }}" style="height: 30px; width: 30px; border-radius: 50%;">
+                            {% else %}
+                            <p>No image</p>
+                            {% endif %}
+                        </a>
+                        {% endif %}
+                    </div>                     
+                </div><!-- user profile end --> 
+
+                                              
+          <!-- small screen Collapsed button start from here -->
+                <a class="navbar-brand" href="#">SHOP</a>
+                <a class="navbar-brand d-flex-inline" href="/">
+                    <img class="rounded-pill" src="{% static 'images/Logo.png' %}" alt="Logo" width="60" height="60" id="logo">
+                  </a>  
+                <button class="navbar-toggler collapsed " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-content">
+                    <i class="fas fa-stream text-white"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar-content">                  
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">   <!-- Main UL start from here -->
+
+                        <!-- Home menu single button -->
+                        <li class="nav-item">
+                            <a class="nav-link " aria-current="page" href="{% url "store:store_home" %}">Home</a>
+                        </li>          
+                                        
+                        <!-- products menu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside">Products</a>
+                            <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="{% url "store:store_home" %}">All products</a></li>                               
+                                <li class="dropend">
+                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
+                                    <ul class="dropdown-menu shadow">
+                                        {% for c in categories %}
+                                        <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+                                            <a class="dropdown-item"  href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                                        </li>
+                                      {% endfor %}
+                                        <li><a class="dropdown-item" href=""> expansionL3</a></li>
+                                        <li><a class="dropdown-item" href=""> expansionL3</a></li>
+                                        <li><a class="dropdown-item" href=""> expansionL3</a></li>
+                                        <li><a class="dropdown-item" href=""> expansionL3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropend">
+                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside">Expansion</a>
+                                    <ul class="dropdown-menu shadow">
+                                        <li><a class="dropdown-item" href=""> ExampansionL2</a></li>
+                                        <li><a class="dropdown-item" href=""> ExampansionL2</a></li>
+                                        <li><a class="dropdown-item" href=""> ExampansionL2</a></li>
+                                        <li class="dropend">
+                                            <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                                data-bs-auto-close="outside">More MenuLx</a>
+                                            <ul class="dropdown-menu dropdown-submenu shadow">
+                                                <li><a class="dropdown-item" href=""> More Menu</a></li>
+                                                <li><a class="dropdown-item" href=""> More Menu</a></li>
+                                                <li><a class="dropdown-item" href=""> More Menu</a></li>
+                                                <li><a class="dropdown-item" href=""> More Menu</a></li>
+                                                <li class="dropend">
+                                                    <a href="#" class="dropdown-item dropdown-toggle"
+                                                        data-bs-toggle="dropdown">More menuLxx</a>
+                                                    <ul class="dropdown-menu dropdown-submenu shadow">
+                                                        <li><a class="dropdown-item" href=""> More menuxx</a></li>
+                                                        <li><a class="dropdown-item" href=""> More menuxx</a></li>
+                                                        <li><a class="dropdown-item" href=""> More menuxx</a></li>
+                                                        <li><a class="dropdown-item" href=""> More menuxx</a></li>
+                                                        <li><a class="dropdown-item" href=""> More menuxx</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item" href=""> Third level 5</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- admin users menu -->                       
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside">Admin</a>
+                        <ul class="dropdown-menu shadow">                                                         
+                            <li class="dropstart px-3">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Admin Page</a>
+                                <ul class="dropdown-menu shadow px-3">
+                                  <li><a class="dropdown-item" href= "{% url 'account:admin-view' %}">Admin Page</a> </li> 
+                                  <li class="nav-item dropstart"> <a class="dropdown-item" href= "{% url 'store:product-list' %}">All Product Status</a>
+                                    <li><a class="dropdown-item" href= "{% url 'orders:order_crud_read' %}">Update_with Modal</a></li>
+                                    <li><a class="dropdown-item" href= "{% url 'orders:update_delivery_status' %}">update_delivery_status</a></li>
+                                    <li><a class="dropdown-item" href= "#">submenu2</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li> 
+
+                       <!-- Megamenu list -->
+                        <li class="nav-item dropdown dropdown-mega position-static">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside">Megamenu</a>
+                            <div class="dropdown-menu shadow">
+                                <div class="mega-content px-md-4">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 py-4 px-xl-5 px-4">
+                                                <h5>Service</h5>
+                                                <div class="list-group">
+                                                    <a class="list-group-item" href="#">Accomodations</a>
+                                                    <a class="list-group-item" href="#">Terms & Conditions</a>
+                                                    <a class="list-group-item" href="#">Privacy</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                    <a class="list-group-item" href="#">Lorum</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- user's account and Lists orders -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside">Account & Lists</a>
+                            <ul class="dropdown-menu shadow">
+                                                             
+                                <li class="dropstart px-3">
+                                    <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">My Account</a>
+                                    <ul class="dropdown-menu shadow px-3">
+                                      
+                                        {% if user.is_authenticated %}
+                                        <li><a href="{% url "account:dashboard" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Your Account</a></li>
+                                        <li><a href="{% url "orders:order-item" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Orders</a></li>
+                                        <li><a href="{% url "account:logout" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Logout</a>  </li>    
+                                          {% else %}
+                                        <li><a href="{% url "account:login" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Login</a></li>
+                                      {% endif %}
+                                  
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> 
+
+
+
+                       <!-- vendors's account and Lists orders postponed for development -->
+                       <!--    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside">Vendor's Business</a>
+                        <ul class="dropdown-menu shadow">
+                                                         
+                            <li class="dropstart px-3">
+                                <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">My Account</a>
+                                <ul class="dropdown-menu shadow px-3">
+                                  
+                                    {% if user.is_authenticated %}
+                                    <li><a href="{% url "account:dashboard" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Dashboard</a></li>
+                                    <li><a href="{% url "vendors:add-product-dashboard" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Add product dashboard</a></li>
+                                    <li><a href="{% url "vendors:vendor-admin" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">seller Admin</a></li>
+                                    <li><a href="{% url "vendors:edit-vendor" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Edit Seller</a></li>                                   
+                                    <li><a href="{% url "account:logout" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Logout</a>  </li>    
+                                      {% else %}
+                                    <li><a href="{% url "account:register" %}" class="text-reset small list-group-item p-0 pb-1 border-0 dropdown-account-link">Become Seller</a></li>
+                                  {% endif %}
+                              
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>  -->
+
+
+                      
+                       
+
+                    </ul><!-- here is the end of main ul -->                                   
+                  </div><!-- this is the SHOP  dropdown button container -->
+            </div>  <!-- this is the main container -->        
+        
+     
+            
+         </nav> 
+         <!-- this is the end of nav -->
+
+         
+
+        
+
+        <!-- Search button /collapsed side bar /email/phone styling --> 
+
+    <!-- left side bar -->         
+    <div class="container" >
+        <div class="row row-cols-md-4 row-cols-2" style="justify-content: center; align-items: center;">            
+            <div class="col-3">                              
+                <div>
+                    <div id="mySidebar" class="sidebar">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span style="color:white">Close</a></span>
+                        <a href= "{% url "store:store_home" %}"><span style="color:white">Home</a></span>
+                        <a href="{% url 'companyprofile:about' %}">About Us</a>
+                        <a href="#">Clients</a>
+                        <a href="{% url 'companyprofile:contact' %}">Contact</a>
+                        <a href= "{% url "store:company-reviews" %}"><span style="color:white">Company Review</a></span>
+                    </div>                        
+                    <div id="main">
+                        <button class="openbtn" onclick="openNav()" style="width:50px">☰</button>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="col-9">
+                <div>
+                    <form action="{% url 'store:search' %}" method="get">
+                        <div class="input-group">
+                        <input class="form-control" style="border: 1px solid #f5f0f0;"type="text" name="q" placeholder="Search products or FAQ" aria-label="Search" style="width:300px;">
+                        <button class="btn search-btn_custom" type="submit">
+                            <i class="fa fa-search"></i>s
+                        </button>
+                        </div>
+                    </form>  
+                </div> 
+            </div>
+
+            <div class="col" style="color:yellow;font-style: italic;">
+                <p><i class="fas fa-phone"></i> 01743800705</p></span>
+            </div>
+
+            <div class="col" style="color:white;font-style: italic;">
+                <p ><i class="fas fa-envelope"></i> <a href="mailto:info@example.com"><span style="color:white;font-style: italic;">info@example.com</a></span></p>
+            </div>
+            <div class="col">
+              <ul>
+                  <a class="dropdown-item dropdown_background" style="color:white;" href="{% url 'account:login' %}" >
+                      <i class="fas fa-sign-in-alt"></i> Sign In
+                  </a>
+              </ul>
+          </div>
+          <div class="col">
+              <ul>
+                  <a class="dropdown-item dropdown_background" style="color:white;" href="{% url 'account:register' %}">
+                      <i class="fas fa-user-plus"></i> Sign Up
+                  </a>
+              </ul>
+          </div>
+          
+
+        </div>
+    </div>               
+        
+     <!-- for additional items below navbar but within header container -->
+
+    <div class="container">
+        <div class="row row-cols-md-6 rol-cols-3 g-0">           
+            <div class="col"><ul class="d-none d-md-block"><a class="dropdown-item anim2" style="color:orangered;" href="{% url 'account:admin-view' %}">Tech world</a></ul></div>
+            <div class="col"><ul class="d-none d-md-block" ><a class="dropdown-item anim2" style="color:yellow" href="{% url 'account:admin-view' %}">Fitness World</a></ul></div>
+            <div class="col"><ul class="d-none d-md-block" ><a class="dropdown-item anim" style="color:#FF8C00;" href="{% url 'account:admin-view' %}">MOM & Kid's </a></ul></div>
+            <div class="col"><ul class="d-none d-md-block"><a class="dropdown-item anim2" style="color:yellow;" href="{% url 'account:admin-view' %}">health care</a></ul></div>
+            <div class="col"><ul class="d-none d-md-block" ><a class="dropdown-item anim" style="color:#8B008B;" href="{% url 'account:admin-view' %}">Women's world</a></ul></div>
+            <div class="col"> <ul class="d-none d-md-block" ><a class="dropdown-item anim" style="color:white;" href="{% url 'account:admin-view' %}">Men's world</a></ul></div>
+            <div class="col"> <ul ><a class="dropdown-item anim" style="color:yellow;" href="{% url 'account:admin-view' %}">Popular</a></ul></div>
+            <div class="col"> <ul ><a class="dropdown-item anim" style="color:red;" href="{% url 'account:admin-view' %}">Hot Deals</a></ul></div>
+                   
+           
+        </div>
+    </div>
+
+
+    </header>
+
+   
+  <main class="pt-3">    
+    {% block content %}
+
+    
+    
+    {% endblock %}
+</main>
+
+   
+  <footer class="container py-5 footer">
+    <hr>
+    <div class="row pt-4">
+      <div class="col-12 col-md">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-asterisk"
+          viewBox="0 0 16 16">
+          <path
+            d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z" />
+        </svg>
+        <small class="d-block mb-3 text-muted">&copy; 2021-2023</small>
+      </div>
+      <div class="col-6 col-md fs15">
+        <h5>Features</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md fs15">
+        <h5>Resources</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md fs15">
+        <h5>Resources</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="#">Business</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Education</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Government</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Gaming</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5 style="color:blue">About</h5>
+        <ul class="list-unstyled">
+          <li><a class="link-secondary text-decoration-none" href="{% url 'companyprofile:about' %}"><strong>About</strong></a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+           <li> <a href="{% url 'companyprofile:contact' %}">Location</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+          <li><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+
+
+    <script>
+       
+    
+        /* sidebar nav*/
+      function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+    
+        
+    
+    $(document).ready(function() {
+        $("#search-form").submit(function(e) {
+          e.preventDefault();
+          let query = $("#search-input").val();
+          $.ajax({
+            type: "GET",
+            url: "/search/",  
+            data: {
+              q: query
+            },
+            success: function(data) {
+              $("#search-results").html(data);
+            },
+            error: function(error) {
+              console.error("An error occurred:", error);
+            }
+          });
+        });
+      });
+    
+    
+    
+      </script>
+</body>
+
+</html>

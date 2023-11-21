@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Add Product{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2>Add Product Dashboard</h2>
+    <div class="row">
+        <div class="col-md-3">
+            <a href="{% url 'vendors:add-product-step1' %}" class="btn btn-primary btn-block mb-2">Step 1: Category and Product Type</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'vendors:add-product-step2' category_id=1 %}" class="btn btn-primary btn-block mb-2">Step 2: Product and Specification</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'vendors:add-product-step3' product_id=1 %}" class="btn btn-primary btn-block mb-2">Step 3: Specification Value</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'vendors:add-product-step4' product_id=1 %}" class="btn btn-primary btn-block mb-2">Step 4: Product Image</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
