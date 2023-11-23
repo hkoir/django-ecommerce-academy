@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Store - Low Prices in Books & more{% endblock %}
+{% block content %}
+
+
+<!-- {% for visitor in visitors %}
+  <p>{{ visitor.user_name|default:'Unregistered' }} ({{ visitor.ip_address }}): 
+    Total Visits: {{ visitor.total_visits }} DateTime: {{ visitor.timestamp }}</p>
+{% endfor %} -->
+
+
+{% for visitor in visitors %}
+  <p>{{ visitor.user_name|default:'Unregistered' }} ({{ visitor.ip_address }}): Total Visits: {{ visitor.total_visits }} DateTime: {{ visitor.latest_timestamp }}</p>
+{% endfor %}
+
+{% endblock %}

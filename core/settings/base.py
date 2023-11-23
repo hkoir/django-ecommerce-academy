@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'seller',
      'django.contrib.sites',
     'django.contrib.sitemaps',
-    'companyprofile'
+    'companyprofile',
+    'visitors'
   
    
 ]
@@ -44,6 +45,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
      'django.contrib.sites.middleware.CurrentSiteMiddleware',
+     'visitors.middleware.UniqueVisitorMiddleware',
     
 ]
 

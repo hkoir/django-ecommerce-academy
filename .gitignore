@@ -2,3 +2,6 @@ LICENSE
 README.md
 _documentation/
 myenv/
+db.sqlite3
+core/__pycache__/urls.cpython-311.pyc
+core/settings/__pycache__/base.cpython-311.pyc
